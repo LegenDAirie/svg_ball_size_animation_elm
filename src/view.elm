@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html)
+import Html exposing (Html, div)
 import Html.Attributes
 import Html.Events exposing (onClick)
 import Svg exposing (..)
@@ -12,16 +12,19 @@ import Animation
 
 view : Model -> Html Msg
 view model =
-    svg [ viewBox "-2 -2 6 6" ]
-        [ circle
-            (Animation.render model.style
-                ++ [ onClick Resize
-                   , Html.Attributes.style
-                        [ ( "fill", "#f88" )
-                        , ( "stroke", "black" )
-                        , ( "strokeWidth", "0.01" )
-                        ]
-                   ]
-            )
-            []
+    div []
+        [ Html.h1 [ fontSize "36px" ] [ Html.text "Click the circle" ]
+        , svg [ viewBox "-2 -2 6 6" ]
+            [ circle
+                (Animation.render model.style
+                    ++ [ onClick Resize
+                       , Html.Attributes.style
+                            [ ( "fill", "#f88" )
+                            , ( "stroke", "black" )
+                            , ( "strokeWidth", "0.01" )
+                            ]
+                       ]
+                )
+                []
+            ]
         ]
